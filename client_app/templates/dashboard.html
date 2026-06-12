@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block body %}
+  <nav>
+    <a href="{{ url_for('index') }}">Home</a>
+    <a href="{{ url_for('logout') }}">Logout</a>
+  </nav>
+
+  <h2>Hello {{ me.name or me.email }}</h2>
+  <p><small>sub: <code>{{ me.sub }}</code> &middot; scope: <code>{{ me.scope }}</code></small></p>
+
+  <h3>Your notes ({{ notes|length }})</h3>
+  {% for n in notes %}
+    <div class="note">
+      <strong>{{ n.title }}</strong>
+      <p>{{ n.body }}</p>
+      <form method="post" action="{{ url_for('delete_note', nid=n.id) }}">
+        <button type="submit" style="background:#e53935">Delete</button>
+      </form>
+    </div>
+  {% else %}
+    <p><em>No notes yet.</em></p>
+  {% endfor %}
+
+  <h3>New note</h3>
+  <form method="post" action="{{ url_for('create_note') }}">
+    <input    name="title" placeholder="title" required>
+    <textarea name="body"  placeholder="body" rows="3"></textarea>
+    <button type="submit">Create</button>
+  </form>
+{% endblock %}

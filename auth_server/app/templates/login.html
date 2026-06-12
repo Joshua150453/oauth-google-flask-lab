@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block body %}
+  <h2>Sign in</h2>
+  <form method="post">
+    <input name="email"    type="email"    placeholder="email"    required>
+    <input name="password" type="password" placeholder="password" required>
+    <button type="submit">Sign in</button>
+  </form>
+  <p><a href="{{ url_for('auth.register', next=request.args.get('next', '/')) }}">Create account</a></p>
+{% endblock %}

@@ -1,0 +1,22 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Auth Server</title>
+  <style>
+    body { font-family: sans-serif; max-width: 480px; margin: 60px auto; padding: 20px; }
+    input { display: block; width: 100%; padding: 8px; margin: 6px 0; box-sizing: border-box; }
+    button { padding: 10px 20px; background: #1e88e5; color: white; border: 0; cursor: pointer; }
+    .error { color: #c62828; }
+    .info  { color: #455a64; background: #eceff1; padding: 12px; border-radius: 4px; }
+  </style>
+</head>
+<body>
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% for category, message in messages %}
+      <p class="{{ category }}">{{ message }}</p>
+    {% endfor %}
+  {% endwith %}
+  {% block body %}{% endblock %}
+</body>
+</html>

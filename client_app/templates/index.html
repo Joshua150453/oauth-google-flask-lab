@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block body %}
+  <h1>Notes Client</h1>
+  {% if logged_in %}
+    <p><a href="{{ url_for('dashboard') }}">Open dashboard</a> &middot;
+       <a href="{{ url_for('logout') }}">Logout</a></p>
+  {% else %}
+    <p>This app uses OAuth 2.0 to access your notes.</p>
+    <p><a href="{{ url_for('login') }}"><button>Login with Auth Server</button></a></p>
+  {% endif %}
+{% endblock %}

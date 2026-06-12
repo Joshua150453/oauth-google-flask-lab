@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block body %}
+  <h2>Authorize {{ client.name }}?</h2>
+  <div class="info">
+    <p><strong>{{ client.name }}</strong> would like to access:</p>
+    <ul>
+      {% for s in scope.split() %}
+        <li><code>{{ s }}</code></li>
+      {% endfor %}
+    </ul>
+  </div>
+  <form method="post">
+    <button name="decision" value="approve">Approve</button>
+    <button name="decision" value="deny" style="background:#e53935">Deny</button>
+  </form>
+{% endblock %}
